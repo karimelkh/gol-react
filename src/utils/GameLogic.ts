@@ -27,7 +27,7 @@ export function pauseGame(
     if (intervalRef.current) clearInterval(intervalRef.current);
     return {
       ...prevState,
-      isRunning: !prevState.isRunning,
+      isRunning: false,
     };
   });
 }

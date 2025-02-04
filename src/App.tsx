@@ -34,42 +34,40 @@ function App() {
     isRunning: false,
   });
 
-  const keyConfigs: Keybindings = {
-    k: () => {
-      if (state.isRunning) pauseGame(setState, intervalRef);
-      else playGame(setState, intervalRef);
-    },
-    l: () =>
-      !state.isRunning
-        ? nextStep(setState)
-        : sendMessage(
-            "Can't go to the next step while the game is running. Stop it first!",
-          ),
-    j: () => console.log('[TODO] prevStep'), // TODO: waiting for the	`prevStep` impl
-    s: () => seedBoard(setState),
-    '>': () => changeSpeed(setState, -200),
-    '<': () => changeSpeed(setState, 200),
-    r: () => resetBoard(setState, intervalRef),
-    n: () =>
-      !state.isRunning
-        ? nextStep(setState)
-        : sendMessage(
-            "Can't go to the next step while the game is running. Stop it first!",
-          ),
-    p: () => console.log('[TODO] prevStep'),
-  };
-
   useEffect(() => {
     if (state.isRunning) playGame(setState, intervalRef);
   }, [state.speed, state.isRunning]);
 
-  document.addEventListener(
-    'DOMContentLoaded',
-    () => {
-      handleKeybinds(keyConfigs);
-    },
-    { once: true },
-  );
+  useEffect(() => {
+    const keyConfigs: Keybindings = {
+      k: () => {
+        if (state.isRunning) pauseGame(setState, intervalRef);
+        else playGame(setState, intervalRef);
+      },
+      l: () =>
+        !state.isRunning
+          ? nextStep(setState)
+          : sendMessage(
+              "Can't go to the next step while the game is running. Stop it first!",
+            ),
+      j: () => console.log('[TODO] prevStep'), // TODO: waiting for the	`prevStep` impl
+      s: () => seedBoard(setState),
+      '>': () => changeSpeed(setState, -200),
+      '<': () => changeSpeed(setState, 200),
+      c: () => resetBoard(setState, intervalRef),
+      n: () =>
+        !state.isRunning
+          ? nextStep(setState)
+          : sendMessage(
+              "Can't go to the next step while the game is running. Stop it first!",
+            ),
+      p: () => console.log('[TODO] prevStep'),
+    };
+
+    const listener = handleKeybinds(keyConfigs);
+    window.addEventListener('keydown', listener);
+    return () => window.removeEventListener('keydown', listener);
+  }, [state.isRunning]);
 
   return (
     <div className="relative w-screen h-screen bg-cerulean">
