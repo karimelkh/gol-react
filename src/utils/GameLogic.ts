@@ -62,15 +62,19 @@ export function prevStep(setState: SetStateAliase) {
 
 function nextGenerationGrid(arr: boolean[][]): [number, boolean[][]] {
   let population: number = 0;
+  const next_board: boolean[][] = new Array(arr.length)
+    .fill(null)
+    .map(() => new Array(arr[0].length).fill(false));
   for (let i: number = 0; i < arr.length; i++) {
     for (let j: number = 0; j < arr[0].length; j++) {
       const n: NeighboursType = getNeighbours(arr, i, j);
-      if (n.IsUnderpopulated || n.IsOverpopulated) arr[i][j] = false;
-      else if (n.IsReproducible) arr[i][j] = true;
-      if (arr[i][j]) population++;
+      if (n.IsUnderpopulated || n.IsOverpopulated) next_board[i][j] = false;
+      else if (n.IsReproducible) next_board[i][j] = true;
+      else next_board[i][j] = arr[i][j];
+      if (next_board[i][j]) population++;
     }
   }
-  return [population, arr];
+  return [population, next_board];
 }
 
 function prevGenerationGrid(arr: boolean[][]): [number, boolean[][]] {

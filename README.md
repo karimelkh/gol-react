@@ -6,5 +6,4 @@ implementaion using React + TS.
 ## TODOs
 
 - Make the page responsive
-- Review the algorithm/game logic or how the next board is generated
 - Implement the prevStep function
