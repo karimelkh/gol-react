@@ -16,3 +16,5 @@ npm run preview
 - Make the page responsive
 - Implement the prevStep function
 - Add tooltips above buttons
+- Organize the components
+- Implement the Engine-Skin app architecture
