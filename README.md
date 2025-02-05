@@ -3,6 +3,14 @@
 Conway's game of life ([wikipedia](https://en.wikipedia.org/wiki/Conway's_Game_of_Life))
 implementaion using React + TS.
 
+## Quick Start
+
+```sh
+npm i
+npm run build
+npm run preview
+```
+
 ## TODOs
 
 - Make the page responsive
