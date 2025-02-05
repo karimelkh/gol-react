@@ -1,11 +1,11 @@
 import StateType from '../types/StateType';
 import Box from './Box';
 
-interface GridConvasProps {
+interface BoardProps {
   st: StateType;
 }
 
-function GridConvas({ st }: GridConvasProps) {
+function Board({ st }: BoardProps) {
   const grid = [];
 
   for (let i: number = 0; i < st.state.rows; i++) {
@@ -77,4 +77,4 @@ function GridConvas({ st }: GridConvasProps) {
 //   return `bg-${randomColor}-${randomDegree}`;
 // }
 
-export default GridConvas;
+export default Board;

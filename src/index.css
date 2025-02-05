@@ -3,19 +3,14 @@
 @tailwind utilities;
 
 .header {
-  @apply text-7xl text-center font-bold text-zinc-200 mb-10;
-  text-transform: uppercase;
-}
-
-.btn {
-  @apply px-4 py-2 bg-lime-500 text-zinc-200 font-extrabold rounded-sm hover:bg-pink-600 duration-200;
+  @apply text-7xl text-center font-bold text-zinc-200;
   text-transform: uppercase;
 }
 
 .box {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   margin: 0;
   padding: 0;
   border: 1px solid black;
@@ -31,4 +26,36 @@
 
 .off {
   @apply bg-white;
+}
+
+.btn-container {
+  position: relative;
+  display: inline-block;
+}
+
+.btn {
+  @apply px-4 py-2 bg-lime-500 text-zinc-200 font-extrabold rounded-sm hover:bg-pink-600 duration-200;
+  text-transform: uppercase;
+  min-width: 120px;
+}
+
+.btn:hover + .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  padding: 5px 12px;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-weight: 700;
+  text-transform: capitalize;
+  white-space: nowrap;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  z-index: 1;
 }
