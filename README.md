@@ -7,3 +7,4 @@ implementaion using React + TS.
 
 - Make the page responsive
 - Implement the prevStep function
+- Add tooltips above buttons
